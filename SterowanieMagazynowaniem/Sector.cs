@@ -12,5 +12,10 @@ namespace SterowanieMagazynowaniem
         public string Name { get; set; }
 
         public virtual List<Element> Elements { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("{0}: {1}", SectorId, Name);
+        }
     }
 }
