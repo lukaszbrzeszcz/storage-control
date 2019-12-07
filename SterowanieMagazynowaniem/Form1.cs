@@ -56,6 +56,10 @@ namespace SterowanieMagazynowaniem
         private void ReloadDistancesList()
         {
             Sector sec = (Sector)listBox1.SelectedItem;
+            if (sec == null)
+            {
+                return;
+            }
             BindingList<Distance> from_distances = new BindingList<Distance>();
             BindingList<Distance> to_distances = new BindingList<Distance>();
 
@@ -120,6 +124,7 @@ namespace SterowanieMagazynowaniem
             int value = int.Parse(val);
             Distance.AddDistance(from, to, value);
             ReloadSectorsFormsLists();
+            ReloadDistancesList();
         }
 
         private void btn_add_to_distance_Click(object sender, EventArgs e)
@@ -130,6 +135,7 @@ namespace SterowanieMagazynowaniem
             int value = int.Parse(val);
             Distance.AddDistance(from, to, value);
             ReloadSectorsFormsLists();
+            ReloadDistancesList();
         }
 
         private void remove_dist_from_Click(object sender, EventArgs e)
@@ -144,6 +150,7 @@ namespace SterowanieMagazynowaniem
                 db.SaveChanges();
             }
             ReloadSectorsList();
+            ReloadDistancesList();
         }
 
         private void remove_dist_to_Click(object sender, EventArgs e)
@@ -158,6 +165,7 @@ namespace SterowanieMagazynowaniem
                 db.SaveChanges();
             }
             ReloadSectorsList();
+            ReloadDistancesList();
         }
     }
 }
