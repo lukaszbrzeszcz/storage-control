@@ -11,14 +11,14 @@ namespace SterowanieMagazynowaniem
         public int SectorId { get; set; }
         public string Name { get; set; }
 
-        public virtual List<Element> Elements { get; set; }
+        public virtual List<Medicine> Medicines { get; set; }
 
         public virtual List<Distance> DistancesTo { get; set; }
         public virtual List<Distance> DistancesFrom { get; set; }
 
         public override string ToString()
         {
-            return String.Format("{0}: {1}", SectorId, Name);
+            return String.Format("{0}", Name);
         }
     }
 }

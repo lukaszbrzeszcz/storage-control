@@ -11,7 +11,7 @@ namespace SterowanieMagazynowaniem
     {
         public DbSet<Sector> Sectors { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Element> Elements { get; set; }
+        public DbSet<Medicine> Medicines { get; set; }
         public DbSet<Distance> Distances { get; set; }
     }
 }

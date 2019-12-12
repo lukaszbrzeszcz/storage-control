@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace SterowanieMagazynowaniem
         public Form1()
         {
             InitializeComponent();
+            var d = Program.GetDijkstra();
+            Debug.WriteLine(d);
+            Medicine.LoadMedicines();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -23,6 +27,23 @@ namespace SterowanieMagazynowaniem
             ReloadSectorsList();
             ReloadDistancesList();
             ReloadSectorsFormsLists();
+            ReloadOrdersList();
+            var db = new ProgramContext();
+            db.Medicines.Load();
+            medicineBindingSource.DataSource = db.Medicines.Local.ToList();             
+        }
+
+        private void ReloadOrdersList()
+        {
+            BindingList<Order> orders = new BindingList<Order>();
+            using (var db = new ProgramContext())
+            {
+                foreach(var o in db.Orders)
+                {
+                    orders.Add(o);
+                }
+                ordersListBox.DataSource = orders;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -166,6 +187,51 @@ namespace SterowanieMagazynowaniem
             }
             ReloadSectorsList();
             ReloadDistancesList();
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ordersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindingList<Medicine> medicines = new BindingList<Medicine>();
+            Order ord = (Order)ordersListBox.SelectedItem;
+            using (var db = new ProgramContext())
+            {
+                foreach(var med in db.Orders.Where(o => o.OrderId == ord.OrderId).First().Medicines.ToList())
+                {
+                    medicines.Add(med);
+                }
+            }
+            medicinesListBox.DataSource = medicines;
+        }
+
+        private void generateOrderBtn_Click(object sender, EventArgs e)
+        {
+            Order ord = new Order();
+            Random rand = new Random();
+            using (var db = new ProgramContext())
+            {
+                List<Medicine> medicines = db.Medicines.OrderBy(r => Guid.NewGuid()).Take(rand.Next(20)).ToList();
+                ord.Medicines = medicines;
+                db.Orders.Add(ord);
+                db.SaveChanges();
+            }
+            ReloadOrdersList();
+        }
+
+        private void removeOrderBtn_Click(object sender, EventArgs e)
+        {
+            Order ord = (Order)ordersListBox.SelectedItem;
+            using (var db = new ProgramContext())
+            {
+                Order to_del = db.Orders.Where(o => o.OrderId == ord.OrderId).First();
+                db.Orders.Remove(to_del);
+                db.SaveChanges();
+            }
+            ReloadOrdersList();
         }
     }
 }

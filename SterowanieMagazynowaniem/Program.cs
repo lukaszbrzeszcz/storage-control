@@ -17,8 +17,7 @@ namespace SterowanieMagazynowaniem
         [STAThread]
         static void Main()
         {
-            var d = Dijkstra();
-            Debug.WriteLine(d);
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
@@ -26,7 +25,7 @@ namespace SterowanieMagazynowaniem
             
         }
 
-        private static Dijkstra Dijkstra()
+        public static Dijkstra GetDijkstra()
         {
             List<Sector> sectors;
             List<Distance> distances;
