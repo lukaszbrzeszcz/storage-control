@@ -51,7 +51,6 @@ namespace SterowanieMagazynowaniem
                         }
                     }
                     L.Remove(min_name);
-                    Debug.WriteLine(string.Join(", ", L));
 
                     foreach (var e in distances)
                     {
