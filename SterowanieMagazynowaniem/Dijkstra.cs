@@ -10,24 +10,24 @@ namespace SterowanieMagazynowaniem
 {
     public class Dijkstra
     {
-        public Dictionary<string, Dictionary<string, int>> graph;
+        public Dictionary<int, Dictionary<int, int>> graph;
 
         public Dijkstra(List<Sector> sectors, List<Distance> distances)
         {
-            graph = new Dictionary<string, Dictionary<string, int>>();
+            graph = new Dictionary<int, Dictionary<int, int>>();
             foreach ( var s1 in sectors )
             {
                 foreach ( var s2 in sectors )
                 {
                     int val;
-                    if (s1.Name == s2.Name)
+                    if (s1.SectorId == s2.SectorId)
                         val = 0;
                     else
                         val = int.MaxValue;
 
-                    if (!graph.ContainsKey(s1.Name))
-                        graph[s1.Name] = new Dictionary<string, int>();
-                    graph[s1.Name][s2.Name] = val;
+                    if (!graph.ContainsKey(s1.SectorId))
+                        graph[s1.SectorId] = new Dictionary<int, int>();
+                    graph[s1.SectorId][s2.SectorId] = val;
                 }
             }
 
@@ -35,31 +35,30 @@ namespace SterowanieMagazynowaniem
             
             foreach (var s1 in sectors)
             {
-                List<string> L = new List<string>();
-                foreach (var s in sectors) L.Add(s.Name);
+                List<int> L = new List<int>();
+                foreach (var s in sectors) L.Add(s.SectorId);
                 for (int i = 1; i <= sectors.Count; i++)
                 {
                     int min = int.MaxValue;
-                    string min_name = "";
+                    int min_id = -1;
                     foreach (var s2 in sectors)
                     {
-                        if (!L.Contains(s2.Name)) continue;
-                        if (graph[s1.Name][s2.Name] < min)
+                        if (!L.Contains(s2.SectorId)) continue;
+                        if (graph[s1.SectorId][s2.SectorId] < min)
                         {
-                            min = graph[s1.Name][s2.Name];
-                            min_name = s2.Name;
+                            min = graph[s1.SectorId][s2.SectorId];
+                            min_id = s2.SectorId;
                         }
                     }
-                    L.Remove(min_name);
-                    Debug.WriteLine(string.Join(", ", L));
+                    L.Remove(min_id);
 
                     foreach (var e in distances)
                     {
-                        if (e.SectorFrom.Name == min_name)
+                        if (e.SectorFrom.SectorId == min_id)
                         {
-                            if (graph[s1.Name][e.SectorTo.Name] > graph[s1.Name][e.SectorFrom.Name] + e.Value)
+                            if (graph[s1.SectorId][e.SectorTo.SectorId] > graph[s1.SectorId][e.SectorFrom.SectorId] + e.Value)
                             {
-                                graph[s1.Name][e.SectorTo.Name] = graph[s1.Name][e.SectorFrom.Name] + e.Value;
+                                graph[s1.SectorId][e.SectorTo.SectorId] = graph[s1.SectorId][e.SectorFrom.SectorId] + e.Value;
                             }
                         }
                     }
@@ -71,9 +70,9 @@ namespace SterowanieMagazynowaniem
         public override string ToString()
         {
             string str = "";
-            foreach(KeyValuePair<string, Dictionary<string, int>> key_val_p in graph)
+            foreach(KeyValuePair<int, Dictionary<int, int>> key_val_p in graph)
             {
-                foreach(KeyValuePair<string, int> kvp in key_val_p.Value)
+                foreach(KeyValuePair<int, int> kvp in key_val_p.Value)
                 {
                     str += string.Format("{0} -> {1}: {2}\n", key_val_p.Key, kvp.Key, kvp.Value);
                 }

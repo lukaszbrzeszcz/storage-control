@@ -17,8 +17,6 @@ namespace SterowanieMagazynowaniem
         public Form1()
         {
             InitializeComponent();
-            var d = Program.GetDijkstra();
-            Debug.WriteLine(d);
             Medicine.LoadMedicines();
         }
 
@@ -232,6 +230,20 @@ namespace SterowanieMagazynowaniem
                 db.SaveChanges();
             }
             ReloadOrdersList();
+        }
+
+        private void runBtn_Click(object sender, EventArgs e)
+        {
+            var db = new ProgramContext();
+            List<Medicine> medicines = new List<Medicine>();
+            foreach (Order ord in db.Orders.ToList())
+            {
+                medicines.AddRange(ord.Medicines);
+            }
+            int numWorkers = (int)nWorkers.Value;
+            int limitMedicines = (int)limit.Value;
+            SA algo = new SA(numWorkers, limitMedicines, medicines);
+            algo.Run();         
         }
     }
 }
