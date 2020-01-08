@@ -40,9 +40,15 @@ namespace SterowanieMagazynowaniem
             using (var db = new ProgramContext())
             {
                 sec = db.Sectors.Where(s => s.SectorId == SectorID).First();
-                str = string.Format("{0}, {1}, {2}", Name, Price, sec.Name);
+                str = string.Format("{0}, {1}, {2}", Name, Price, sec.SectorId);
             }
             return str;
+        }
+
+        public int DistanceTo(Medicine to)
+        {
+            int dist = Program.d.graph[SectorID][to.SectorID];
+            return dist;
         }
 
         internal static void LoadMedicines()
@@ -65,7 +71,7 @@ namespace SterowanieMagazynowaniem
                 {
                     parser.TextFieldType = FieldType.Delimited;
                     parser.SetDelimiters(",");
-                    List<Sector> sectors = db.Sectors.ToList();
+                    List<Sector> sectors = db.Sectors.Where(s=> s.Name != "0").ToList();
                     IList<Medicine> medicines = new List<Medicine>();
                     Random rand = new Random();
                     while (!parser.EndOfData)

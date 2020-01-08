@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.remove_dist_to = new System.Windows.Forms.Button();
             this.remove_dist_from = new System.Windows.Forms.Button();
@@ -71,10 +71,12 @@
             this.medicineBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.buttonRun = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nWorkers = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
-            this.tabControl.SuspendLayout();
+            this.label13 = new System.Windows.Forms.Label();
+            this.limit = new System.Windows.Forms.NumericUpDown();
+            this.runBtn = new System.Windows.Forms.Button();
+            this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -83,6 +85,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nWorkers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.limit)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -97,18 +101,18 @@
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // tabControl
+            // tabControl1
             // 
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Controls.Add(this.tabPage3);
-            this.tabControl.Controls.Add(this.tabPage4);
-            this.tabControl.Location = new System.Drawing.Point(9, 10);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(822, 389);
-            this.tabControl.TabIndex = 1;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Location = new System.Drawing.Point(9, 10);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(822, 389);
+            this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -519,9 +523,11 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.runBtn);
+            this.tabPage4.Controls.Add(this.label13);
+            this.tabPage4.Controls.Add(this.limit);
             this.tabPage4.Controls.Add(this.label12);
-            this.tabPage4.Controls.Add(this.textBox1);
-            this.tabPage4.Controls.Add(this.buttonRun);
+            this.tabPage4.Controls.Add(this.nWorkers);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -530,43 +536,62 @@
             this.tabPage4.Text = "Algorithm";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // buttonRun
+            // nWorkers
             // 
-            this.buttonRun.Location = new System.Drawing.Point(571, 287);
-            this.buttonRun.Name = "buttonRun";
-            this.buttonRun.Size = new System.Drawing.Size(237, 70);
-            this.buttonRun.TabIndex = 0;
-            this.buttonRun.Text = "RUN";
-            this.buttonRun.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(6, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(46, 20);
-            this.textBox1.TabIndex = 1;
+            this.nWorkers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.nWorkers.Location = new System.Drawing.Point(124, 6);
+            this.nWorkers.Name = "nWorkers";
+            this.nWorkers.Size = new System.Drawing.Size(54, 26);
+            this.nWorkers.TabIndex = 0;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label12.Location = new System.Drawing.Point(58, 6);
+            this.label12.Location = new System.Drawing.Point(19, 19);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(218, 24);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Number of Employees";
+            this.label12.Size = new System.Drawing.Size(99, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Number of Workers";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(19, 51);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(91, 13);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Limit of Medicines";
+            // 
+            // limit
+            // 
+            this.limit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.limit.Location = new System.Drawing.Point(124, 38);
+            this.limit.Name = "limit";
+            this.limit.Size = new System.Drawing.Size(54, 26);
+            this.limit.TabIndex = 2;
+            // 
+            // runBtn
+            // 
+            this.runBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.runBtn.Location = new System.Drawing.Point(94, 70);
+            this.runBtn.Name = "runBtn";
+            this.runBtn.Size = new System.Drawing.Size(84, 33);
+            this.runBtn.TabIndex = 4;
+            this.runBtn.Text = "Run";
+            this.runBtn.UseVisualStyleBackColor = true;
+            this.runBtn.Click += new System.EventHandler(this.runBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 409);
-            this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -577,6 +602,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nWorkers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.limit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -584,7 +611,7 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btn_remove_sector;
@@ -625,9 +652,11 @@
         private System.Windows.Forms.Button generateOrderBtn;
         private System.Windows.Forms.ListBox medicinesListBox;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button runBtn;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown limit;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button buttonRun;
+        private System.Windows.Forms.NumericUpDown nWorkers;
     }
 }
 

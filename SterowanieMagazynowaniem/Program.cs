@@ -11,6 +11,9 @@ namespace SterowanieMagazynowaniem
 {
     static class Program
     {
+        public static Random rand = new Random();
+        public static Dijkstra d;
+        public static int sec_0_id;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -20,9 +23,10 @@ namespace SterowanieMagazynowaniem
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-
-            
+            d = GetDijkstra();
+            var db = new ProgramContext();
+            sec_0_id = db.Sectors.Where(sec => sec.Name == "0").First().SectorId;
+            Application.Run(new Form1());         
         }
 
         public static Dijkstra GetDijkstra()
