@@ -243,7 +243,8 @@ namespace SterowanieMagazynowaniem
             int numWorkers = (int)nWorkers.Value;
             int limitMedicines = (int)limit.Value;
             SA algo = new SA(numWorkers, limitMedicines, medicines);
-            algo.Run();         
+            algo.Run();
+            textBoxOutput.Text = algo.TextOutput;
         }
     }
 }

@@ -13,6 +13,7 @@ namespace SterowanieMagazynowaniem
         public int ItemLimit { get; set; }
         public List<Medicine> Medicines { get; set; }
         public int GoalFunction { get; set; }
+        public string TextOutput;
 
         public float T0 = 1000000F;
         public float Tk = 0.8F;
@@ -25,11 +26,20 @@ namespace SterowanieMagazynowaniem
             Medicines.Insert(0, null);
             Medicines.Add(null);
             Random rand = new Random();
-            for(int i=0; i<NWorkers-1; i++)
+            for(int i=1; i<NWorkers; i++)
             {
-                Medicines.Insert(rand.Next(Medicines.Count - 1) + 1, null);
+                if (i * item_limit < Medicines.Count)
+                    Medicines.Insert(i * item_limit, null);
+                else
+                    Medicines.Add(null);
+                //Medicines.Insert(rand.Next(Medicines.Count - 1) + 1, null); /////////////TUTAJ
             }
-            var db = new ProgramContext();  
+            foreach (var med in Medicines)
+            {
+                Debug.WriteLine(med);
+            }
+            var db = new ProgramContext();
+            TextOutput = "";
         }
 
         public int Goal(List<Medicine> perm)
@@ -54,6 +64,7 @@ namespace SterowanieMagazynowaniem
                 {
                     max_dist = Math.Max(curr_dist, max_dist);
                     curr_dist = 0;
+                    counter = 0;
                 }
             }
             return max_dist;
@@ -127,16 +138,26 @@ namespace SterowanieMagazynowaniem
                 }
                 T = lambda * T;
             }
+            TextOutput += "Best Goal: " + Environment.NewLine;
+            TextOutput += best_goal.ToString();
+            TextOutput += Environment.NewLine + "Sectors order:" + Environment.NewLine;
             Debug.WriteLine(best_goal);
-            /*
+
             foreach(Medicine med in best_perm)
             {
                 if(med != null)
+                {
                     Debug.Write(String.Format("{0} ", med.SectorID.ToString()));
+                    TextOutput += String.Format("{0} ", med.SectorID.ToString());
+                }
                 else
+                {
                     Debug.Write("| ");
+                    TextOutput += "| ";
+                }            
             }
-            */
+            
+     
         }
 
         public static void Swap<T>(IList<T> list, int a, int b)

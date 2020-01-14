@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -58,35 +59,37 @@
             this.btn_remove_sector = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sectorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.medicineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.medicinesListBox = new System.Windows.Forms.ListBox();
             this.removeOrderBtn = new System.Windows.Forms.Button();
             this.generateOrderBtn = new System.Windows.Forms.Button();
             this.ordersListBox = new System.Windows.Forms.ListBox();
-            this.medicineBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.nWorkers = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
+            this.runBtn = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.limit = new System.Windows.Forms.NumericUpDown();
-            this.runBtn = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.nWorkers = new System.Windows.Forms.NumericUpDown();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.textBoxOutput = new System.Windows.Forms.TextBox();
+            this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sectorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.medicineBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.medicineBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.limit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nWorkers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nWorkers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.limit)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -95,7 +98,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(4, 34);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(164, 84);
             this.listBox1.TabIndex = 0;
@@ -107,11 +110,14 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(9, 10);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.ImageList = this.imageList1;
+            this.tabControl1.ItemSize = new System.Drawing.Size(150, 42);
+            this.tabControl1.Location = new System.Drawing.Point(11, 11);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(822, 389);
+            this.tabControl1.Size = new System.Drawing.Size(822, 398);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -141,11 +147,12 @@
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.btn_remove_sector);
             this.tabPage1.Controls.Add(this.listBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.ImageIndex = 3;
+            this.tabPage1.Location = new System.Drawing.Point(4, 46);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage1.Size = new System.Drawing.Size(814, 363);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(814, 348);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sectors and Distances";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -153,7 +160,7 @@
             // remove_dist_to
             // 
             this.remove_dist_to.Location = new System.Drawing.Point(534, 163);
-            this.remove_dist_to.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.remove_dist_to.Margin = new System.Windows.Forms.Padding(2);
             this.remove_dist_to.Name = "remove_dist_to";
             this.remove_dist_to.Size = new System.Drawing.Size(163, 19);
             this.remove_dist_to.TabIndex = 25;
@@ -164,7 +171,7 @@
             // remove_dist_from
             // 
             this.remove_dist_from.Location = new System.Drawing.Point(315, 163);
-            this.remove_dist_from.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.remove_dist_from.Margin = new System.Windows.Forms.Padding(2);
             this.remove_dist_from.Name = "remove_dist_from";
             this.remove_dist_from.Size = new System.Drawing.Size(163, 19);
             this.remove_dist_from.TabIndex = 24;
@@ -228,7 +235,7 @@
             // btn_add_to_distance
             // 
             this.btn_add_to_distance.Location = new System.Drawing.Point(534, 323);
-            this.btn_add_to_distance.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_add_to_distance.Margin = new System.Windows.Forms.Padding(2);
             this.btn_add_to_distance.Name = "btn_add_to_distance";
             this.btn_add_to_distance.Size = new System.Drawing.Size(113, 19);
             this.btn_add_to_distance.TabIndex = 18;
@@ -239,7 +246,7 @@
             // btn_add_from_distance
             // 
             this.btn_add_from_distance.Location = new System.Drawing.Point(315, 323);
-            this.btn_add_from_distance.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_add_from_distance.Margin = new System.Windows.Forms.Padding(2);
             this.btn_add_from_distance.Name = "btn_add_from_distance";
             this.btn_add_from_distance.Size = new System.Drawing.Size(113, 19);
             this.btn_add_from_distance.TabIndex = 17;
@@ -250,7 +257,7 @@
             // value_to
             // 
             this.value_to.Location = new System.Drawing.Point(605, 284);
-            this.value_to.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.value_to.Margin = new System.Windows.Forms.Padding(2);
             this.value_to.Name = "value_to";
             this.value_to.Size = new System.Drawing.Size(43, 20);
             this.value_to.TabIndex = 16;
@@ -259,7 +266,7 @@
             // value_from
             // 
             this.value_from.Location = new System.Drawing.Point(386, 284);
-            this.value_from.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.value_from.Margin = new System.Windows.Forms.Padding(2);
             this.value_from.Name = "value_from";
             this.value_from.Size = new System.Drawing.Size(43, 20);
             this.value_from.TabIndex = 15;
@@ -269,7 +276,7 @@
             // 
             this.comboBox_to.FormattingEnabled = true;
             this.comboBox_to.Location = new System.Drawing.Point(534, 249);
-            this.comboBox_to.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_to.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_to.Name = "comboBox_to";
             this.comboBox_to.Size = new System.Drawing.Size(114, 21);
             this.comboBox_to.TabIndex = 14;
@@ -278,7 +285,7 @@
             // 
             this.comboBox_from.FormattingEnabled = true;
             this.comboBox_from.Location = new System.Drawing.Point(315, 249);
-            this.comboBox_from.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_from.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_from.Name = "comboBox_from";
             this.comboBox_from.Size = new System.Drawing.Size(114, 21);
             this.comboBox_from.TabIndex = 13;
@@ -311,7 +318,7 @@
             this.list_to_distances.FormattingEnabled = true;
             this.list_to_distances.ItemHeight = 16;
             this.list_to_distances.Location = new System.Drawing.Point(534, 74);
-            this.list_to_distances.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.list_to_distances.Margin = new System.Windows.Forms.Padding(2);
             this.list_to_distances.Name = "list_to_distances";
             this.list_to_distances.Size = new System.Drawing.Size(212, 84);
             this.list_to_distances.TabIndex = 10;
@@ -322,7 +329,7 @@
             this.list_from_distances.FormattingEnabled = true;
             this.list_from_distances.ItemHeight = 16;
             this.list_from_distances.Location = new System.Drawing.Point(315, 74);
-            this.list_from_distances.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.list_from_distances.Margin = new System.Windows.Forms.Padding(2);
             this.list_from_distances.Name = "list_from_distances";
             this.list_from_distances.Size = new System.Drawing.Size(216, 84);
             this.list_from_distances.TabIndex = 9;
@@ -341,7 +348,7 @@
             // btn_add_sector
             // 
             this.btn_add_sector.Location = new System.Drawing.Point(8, 217);
-            this.btn_add_sector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_add_sector.Margin = new System.Windows.Forms.Padding(2);
             this.btn_add_sector.Name = "btn_add_sector";
             this.btn_add_sector.Size = new System.Drawing.Size(118, 19);
             this.btn_add_sector.TabIndex = 7;
@@ -362,7 +369,7 @@
             // tb_new_sector_name
             // 
             this.tb_new_sector_name.Location = new System.Drawing.Point(52, 194);
-            this.tb_new_sector_name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_new_sector_name.Margin = new System.Windows.Forms.Padding(2);
             this.tb_new_sector_name.Name = "tb_new_sector_name";
             this.tb_new_sector_name.Size = new System.Drawing.Size(76, 20);
             this.tb_new_sector_name.TabIndex = 5;
@@ -392,7 +399,7 @@
             // btn_remove_sector
             // 
             this.btn_remove_sector.Location = new System.Drawing.Point(4, 124);
-            this.btn_remove_sector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_remove_sector.Margin = new System.Windows.Forms.Padding(2);
             this.btn_remove_sector.Name = "btn_remove_sector";
             this.btn_remove_sector.Size = new System.Drawing.Size(163, 19);
             this.btn_remove_sector.TabIndex = 2;
@@ -403,11 +410,12 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.ImageIndex = 1;
+            this.tabPage2.Location = new System.Drawing.Point(4, 46);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(814, 363);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(814, 348);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Medicines";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -422,12 +430,151 @@
             this.priceDataGridViewTextBoxColumn,
             this.sectorDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.medicineBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 5);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(800, 358);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 359);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.medicinesListBox);
+            this.tabPage3.Controls.Add(this.removeOrderBtn);
+            this.tabPage3.Controls.Add(this.generateOrderBtn);
+            this.tabPage3.Controls.Add(this.ordersListBox);
+            this.tabPage3.ImageIndex = 2;
+            this.tabPage3.Location = new System.Drawing.Point(4, 46);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage3.Size = new System.Drawing.Size(814, 348);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Orders";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // medicinesListBox
+            // 
+            this.medicinesListBox.FormattingEnabled = true;
+            this.medicinesListBox.Location = new System.Drawing.Point(206, 6);
+            this.medicinesListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.medicinesListBox.Name = "medicinesListBox";
+            this.medicinesListBox.Size = new System.Drawing.Size(399, 277);
+            this.medicinesListBox.TabIndex = 5;
+            // 
+            // removeOrderBtn
+            // 
+            this.removeOrderBtn.Location = new System.Drawing.Point(159, 295);
+            this.removeOrderBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.removeOrderBtn.Name = "removeOrderBtn";
+            this.removeOrderBtn.Size = new System.Drawing.Size(150, 28);
+            this.removeOrderBtn.TabIndex = 4;
+            this.removeOrderBtn.Text = "Remove Order";
+            this.removeOrderBtn.UseVisualStyleBackColor = true;
+            this.removeOrderBtn.Click += new System.EventHandler(this.removeOrderBtn_Click);
+            // 
+            // generateOrderBtn
+            // 
+            this.generateOrderBtn.Location = new System.Drawing.Point(5, 295);
+            this.generateOrderBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.generateOrderBtn.Name = "generateOrderBtn";
+            this.generateOrderBtn.Size = new System.Drawing.Size(150, 28);
+            this.generateOrderBtn.TabIndex = 3;
+            this.generateOrderBtn.Text = "Generate Order";
+            this.generateOrderBtn.UseVisualStyleBackColor = true;
+            this.generateOrderBtn.Click += new System.EventHandler(this.generateOrderBtn_Click);
+            // 
+            // ordersListBox
+            // 
+            this.ordersListBox.FormattingEnabled = true;
+            this.ordersListBox.Location = new System.Drawing.Point(5, 6);
+            this.ordersListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.ordersListBox.Name = "ordersListBox";
+            this.ordersListBox.Size = new System.Drawing.Size(151, 277);
+            this.ordersListBox.TabIndex = 2;
+            this.ordersListBox.SelectedIndexChanged += new System.EventHandler(this.ordersListBox_SelectedIndexChanged);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.AutoScroll = true;
+            this.tabPage4.Controls.Add(this.textBoxOutput);
+            this.tabPage4.Controls.Add(this.runBtn);
+            this.tabPage4.Controls.Add(this.label13);
+            this.tabPage4.Controls.Add(this.limit);
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.nWorkers);
+            this.tabPage4.ImageIndex = 0;
+            this.tabPage4.Location = new System.Drawing.Point(4, 46);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(814, 348);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Algorithm";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // runBtn
+            // 
+            this.runBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.runBtn.Location = new System.Drawing.Point(94, 70);
+            this.runBtn.Name = "runBtn";
+            this.runBtn.Size = new System.Drawing.Size(84, 33);
+            this.runBtn.TabIndex = 4;
+            this.runBtn.Text = "Run";
+            this.runBtn.UseVisualStyleBackColor = true;
+            this.runBtn.Click += new System.EventHandler(this.runBtn_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(19, 51);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(91, 13);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Limit of Medicines";
+            // 
+            // limit
+            // 
+            this.limit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.limit.Location = new System.Drawing.Point(124, 38);
+            this.limit.Name = "limit";
+            this.limit.Size = new System.Drawing.Size(54, 26);
+            this.limit.TabIndex = 2;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(19, 19);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(99, 13);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Number of Workers";
+            // 
+            // nWorkers
+            // 
+            this.nWorkers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.nWorkers.Location = new System.Drawing.Point(124, 6);
+            this.nWorkers.Name = "nWorkers";
+            this.nWorkers.Size = new System.Drawing.Size(54, 26);
+            this.nWorkers.TabIndex = 0;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "a4.png");
+            this.imageList1.Images.SetKeyName(1, "a1.png");
+            this.imageList1.Images.SetKeyName(2, "a2.png");
+            this.imageList1.Images.SetKeyName(3, "a3.png");
+            // 
+            // textBoxOutput
+            // 
+            this.textBoxOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxOutput.Location = new System.Drawing.Point(22, 176);
+            this.textBoxOutput.Multiline = true;
+            this.textBoxOutput.Name = "textBoxOutput";
+            this.textBoxOutput.Size = new System.Drawing.Size(773, 138);
+            this.textBoxOutput.TabIndex = 5;
+            this.textBoxOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // medicineIdDataGridViewTextBoxColumn
             // 
@@ -457,62 +604,6 @@
             // 
             this.medicineBindingSource.DataSource = typeof(SterowanieMagazynowaniem.Medicine);
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.medicinesListBox);
-            this.tabPage3.Controls.Add(this.removeOrderBtn);
-            this.tabPage3.Controls.Add(this.generateOrderBtn);
-            this.tabPage3.Controls.Add(this.ordersListBox);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage3.Size = new System.Drawing.Size(814, 363);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Orders";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // medicinesListBox
-            // 
-            this.medicinesListBox.FormattingEnabled = true;
-            this.medicinesListBox.Location = new System.Drawing.Point(206, 6);
-            this.medicinesListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.medicinesListBox.Name = "medicinesListBox";
-            this.medicinesListBox.Size = new System.Drawing.Size(399, 277);
-            this.medicinesListBox.TabIndex = 5;
-            // 
-            // removeOrderBtn
-            // 
-            this.removeOrderBtn.Location = new System.Drawing.Point(5, 327);
-            this.removeOrderBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.removeOrderBtn.Name = "removeOrderBtn";
-            this.removeOrderBtn.Size = new System.Drawing.Size(150, 28);
-            this.removeOrderBtn.TabIndex = 4;
-            this.removeOrderBtn.Text = "Remove Order";
-            this.removeOrderBtn.UseVisualStyleBackColor = true;
-            this.removeOrderBtn.Click += new System.EventHandler(this.removeOrderBtn_Click);
-            // 
-            // generateOrderBtn
-            // 
-            this.generateOrderBtn.Location = new System.Drawing.Point(5, 295);
-            this.generateOrderBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.generateOrderBtn.Name = "generateOrderBtn";
-            this.generateOrderBtn.Size = new System.Drawing.Size(150, 28);
-            this.generateOrderBtn.TabIndex = 3;
-            this.generateOrderBtn.Text = "Generate Order";
-            this.generateOrderBtn.UseVisualStyleBackColor = true;
-            this.generateOrderBtn.Click += new System.EventHandler(this.generateOrderBtn_Click);
-            // 
-            // ordersListBox
-            // 
-            this.ordersListBox.FormattingEnabled = true;
-            this.ordersListBox.Location = new System.Drawing.Point(5, 6);
-            this.ordersListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.ordersListBox.Name = "ordersListBox";
-            this.ordersListBox.Size = new System.Drawing.Size(151, 277);
-            this.ordersListBox.TabIndex = 2;
-            this.ordersListBox.SelectedIndexChanged += new System.EventHandler(this.ordersListBox_SelectedIndexChanged);
-            // 
             // medicineBindingSource1
             // 
             this.medicineBindingSource1.DataSource = typeof(SterowanieMagazynowaniem.Medicine);
@@ -521,89 +612,29 @@
             // 
             this.orderBindingSource.DataSource = typeof(SterowanieMagazynowaniem.Order);
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.runBtn);
-            this.tabPage4.Controls.Add(this.label13);
-            this.tabPage4.Controls.Add(this.limit);
-            this.tabPage4.Controls.Add(this.label12);
-            this.tabPage4.Controls.Add(this.nWorkers);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(814, 363);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Algorithm";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // nWorkers
-            // 
-            this.nWorkers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.nWorkers.Location = new System.Drawing.Point(124, 6);
-            this.nWorkers.Name = "nWorkers";
-            this.nWorkers.Size = new System.Drawing.Size(54, 26);
-            this.nWorkers.TabIndex = 0;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(19, 19);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(99, 13);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Number of Workers";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(19, 51);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(91, 13);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "Limit of Medicines";
-            // 
-            // limit
-            // 
-            this.limit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.limit.Location = new System.Drawing.Point(124, 38);
-            this.limit.Name = "limit";
-            this.limit.Size = new System.Drawing.Size(54, 26);
-            this.limit.TabIndex = 2;
-            // 
-            // runBtn
-            // 
-            this.runBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.runBtn.Location = new System.Drawing.Point(94, 70);
-            this.runBtn.Name = "runBtn";
-            this.runBtn.Size = new System.Drawing.Size(84, 33);
-            this.runBtn.TabIndex = 4;
-            this.runBtn.Text = "Run";
-            this.runBtn.UseVisualStyleBackColor = true;
-            this.runBtn.Click += new System.EventHandler(this.runBtn_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 409);
+            this.ClientSize = new System.Drawing.Size(847, 420);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Main Window";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nWorkers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.limit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nWorkers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -657,6 +688,8 @@
         private System.Windows.Forms.NumericUpDown limit;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown nWorkers;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.TextBox textBoxOutput;
     }
 }
 
