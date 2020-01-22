@@ -15,9 +15,9 @@ namespace SterowanieMagazynowaniem
         public int GoalFunction { get; set; }
         public string TextOutput;
 
-        public float T0 = 1000000F;
-        public float Tk = 0.8F;
-        public float lambda = 0.99999F;
+        public float T0 = 100F;
+        public float Tk = 0.01F;
+        public float lambda = 0.999F;
 
 
         public SA(int num_of_workers, int item_limit, List<Medicine> medicines)
@@ -34,6 +34,7 @@ namespace SterowanieMagazynowaniem
                     Medicines.Add(null);
                 //Medicines.Insert(rand.Next(Medicines.Count - 1) + 1, null); /////////////TUTAJ
             }
+
             foreach (var med in Medicines)
             {
                 Debug.WriteLine(med);
@@ -52,7 +53,8 @@ namespace SterowanieMagazynowaniem
                 counter++;
                 if(counter > ItemLimit)
                 {
-                    throw new ItemLimitExceeded("Item limit has been exceeded");
+                    max_dist = -1;
+                    break;
                 }
                 int from_id, to_id;
                 Medicine from = perm[i];
@@ -86,15 +88,9 @@ namespace SterowanieMagazynowaniem
                 a = Program.rand.Next(perm_len-1) + 1;
                 b = Program.rand.Next(perm_len-1) + 1;
                 Swap<Medicine>(new_perm, a, b);
-                try
-                {
-                    goal = Goal(new_perm);
+                goal = Goal(new_perm);
+                if(goal >= 0)
                     found = true;
-                }
-                catch (ItemLimitExceeded)
-                {
-                    continue;
-                }
             }
             return Tuple.Create(new_perm, goal);
         }
@@ -137,7 +133,9 @@ namespace SterowanieMagazynowaniem
                     }
                 }
                 T = lambda * T;
+                //Debug.WriteLine("T = " + T.ToString() + ", Tk = " + Tk.ToString() + ", goal: " + current_goal.ToString());
             }
+            GoalFunction = best_goal;
             TextOutput += "Best Goal: " + Environment.NewLine;
             TextOutput += best_goal.ToString();
             TextOutput += Environment.NewLine + "Sectors order:" + Environment.NewLine;

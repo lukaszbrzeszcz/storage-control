@@ -59,35 +59,35 @@
             this.btn_remove_sector = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sectorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.medicineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.medicinesListBox = new System.Windows.Forms.ListBox();
             this.removeOrderBtn = new System.Windows.Forms.Button();
             this.generateOrderBtn = new System.Windows.Forms.Button();
             this.ordersListBox = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.runBtn = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.limit = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.nWorkers = new System.Windows.Forms.NumericUpDown();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.textBoxOutput = new System.Windows.Forms.TextBox();
-            this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sectorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.medicineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.medicineBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.limit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nWorkers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -116,7 +116,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(822, 398);
+            this.tabControl1.Size = new System.Drawing.Size(825, 457);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
             // 
@@ -152,7 +152,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(814, 348);
+            this.tabPage1.Size = new System.Drawing.Size(817, 407);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sectors and Distances";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -415,7 +415,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(814, 348);
+            this.tabPage2.Size = new System.Drawing.Size(817, 407);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Medicines";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -437,6 +437,34 @@
             this.dataGridView1.Size = new System.Drawing.Size(800, 359);
             this.dataGridView1.TabIndex = 0;
             // 
+            // medicineIdDataGridViewTextBoxColumn
+            // 
+            this.medicineIdDataGridViewTextBoxColumn.DataPropertyName = "MedicineId";
+            this.medicineIdDataGridViewTextBoxColumn.HeaderText = "MedicineId";
+            this.medicineIdDataGridViewTextBoxColumn.Name = "medicineIdDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // sectorDataGridViewTextBoxColumn
+            // 
+            this.sectorDataGridViewTextBoxColumn.DataPropertyName = "Sector";
+            this.sectorDataGridViewTextBoxColumn.HeaderText = "Sector";
+            this.sectorDataGridViewTextBoxColumn.Name = "sectorDataGridViewTextBoxColumn";
+            // 
+            // medicineBindingSource
+            // 
+            this.medicineBindingSource.DataSource = typeof(SterowanieMagazynowaniem.Medicine);
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.medicinesListBox);
@@ -448,7 +476,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(814, 348);
+            this.tabPage3.Size = new System.Drawing.Size(817, 407);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Orders";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -507,10 +535,20 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 46);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(814, 348);
+            this.tabPage4.Size = new System.Drawing.Size(817, 407);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Algorithm";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // textBoxOutput
+            // 
+            this.textBoxOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxOutput.Location = new System.Drawing.Point(22, 176);
+            this.textBoxOutput.Multiline = true;
+            this.textBoxOutput.Name = "textBoxOutput";
+            this.textBoxOutput.Size = new System.Drawing.Size(773, 212);
+            this.textBoxOutput.TabIndex = 5;
+            this.textBoxOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // runBtn
             // 
@@ -566,44 +604,6 @@
             this.imageList1.Images.SetKeyName(2, "a2.png");
             this.imageList1.Images.SetKeyName(3, "a3.png");
             // 
-            // textBoxOutput
-            // 
-            this.textBoxOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxOutput.Location = new System.Drawing.Point(22, 176);
-            this.textBoxOutput.Multiline = true;
-            this.textBoxOutput.Name = "textBoxOutput";
-            this.textBoxOutput.Size = new System.Drawing.Size(773, 138);
-            this.textBoxOutput.TabIndex = 5;
-            this.textBoxOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // medicineIdDataGridViewTextBoxColumn
-            // 
-            this.medicineIdDataGridViewTextBoxColumn.DataPropertyName = "MedicineId";
-            this.medicineIdDataGridViewTextBoxColumn.HeaderText = "MedicineId";
-            this.medicineIdDataGridViewTextBoxColumn.Name = "medicineIdDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // sectorDataGridViewTextBoxColumn
-            // 
-            this.sectorDataGridViewTextBoxColumn.DataPropertyName = "Sector";
-            this.sectorDataGridViewTextBoxColumn.HeaderText = "Sector";
-            this.sectorDataGridViewTextBoxColumn.Name = "sectorDataGridViewTextBoxColumn";
-            // 
-            // medicineBindingSource
-            // 
-            this.medicineBindingSource.DataSource = typeof(SterowanieMagazynowaniem.Medicine);
-            // 
             // medicineBindingSource1
             // 
             this.medicineBindingSource1.DataSource = typeof(SterowanieMagazynowaniem.Medicine);
@@ -616,7 +616,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 420);
+            this.ClientSize = new System.Drawing.Size(847, 479);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
@@ -627,12 +627,12 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.limit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nWorkers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             this.ResumeLayout(false);
