@@ -3,21 +3,38 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace SterowanieMagazynowaniem
 {
     public partial class Form1 : Form
     {
+        private readonly SynchronizationContext synchronizationContext;
+        private SA algo;
         public Form1()
         {
             InitializeComponent();
+            synchronizationContext = SynchronizationContext.Current;
             Medicine.LoadMedicines();
+            t0.Value = (decimal)SA.T0_def;
+            tk.Value = (decimal)SA.Tk_def;
+            lambd.Value = (decimal)SA.lambda_def;
+
+        }
+
+        private void Chart_Load(int[] x, int[] y)
+        {
+            line_chart.Series[0].ChartType = SeriesChartType.Line;
+            line_chart.Series[0].Points.DataBindXY(x, y);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -233,6 +250,35 @@ namespace SterowanieMagazynowaniem
         }
 
         private void runBtn_Click(object sender, EventArgs e)
+        {       
+            ProcessAlgo();
+        }
+
+        private void ProcessAlgo()
+        {
+            updateText("Processing...");
+            Task.Factory.StartNew(() => RunAlgo()).ContinueWith((n) => this.Invoke((MethodInvoker)delegate { PrintOutput(); }));
+        }
+
+        private void PrintOutput()
+        {      
+            String txt = "Algorithm cannot run for current workers count and medicines limit.";
+            if (algo != null && algo.finished)
+            {
+                int[] x = algo.x.ToArray();
+                int[] y = algo.y.ToArray();
+                Chart_Load(x, y);
+                txt = algo.TextOutput;
+                algo.finished = false;
+            }
+            updateText(txt);
+        }
+
+        private void updateText(String txt)
+        {
+            textBoxOutput.Text = txt;
+        }
+        private void RunAlgo()
         {
             var db = new ProgramContext();
             List<Medicine> medicines = new List<Medicine>();
@@ -242,9 +288,17 @@ namespace SterowanieMagazynowaniem
             }
             int numWorkers = (int)nWorkers.Value;
             int limitMedicines = (int)limit.Value;
-            SA algo = new SA(numWorkers, limitMedicines, medicines);
-            algo.Run();
-            textBoxOutput.Text = algo.TextOutput;
+            float T0 = (float)t0.Value;
+            float Tk = (float)tk.Value;
+            float Lambda = (float)lambd.Value;
+            if (numWorkers * limitMedicines < medicines.Count)
+            {
+                return;
+            }
+            algo = new SA(numWorkers, limitMedicines, medicines, T0, Tk, Lambda);
+            algo.Run();        
+
+            
         }
     }
 }

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -59,17 +62,13 @@
             this.btn_remove_sector = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sectorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.medicineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.medicinesListBox = new System.Windows.Forms.ListBox();
             this.removeOrderBtn = new System.Windows.Forms.Button();
             this.generateOrderBtn = new System.Windows.Forms.Button();
             this.ordersListBox = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.line_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.runBtn = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
@@ -77,17 +76,32 @@
             this.label12 = new System.Windows.Forms.Label();
             this.nWorkers = new System.Windows.Forms.NumericUpDown();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.t0 = new System.Windows.Forms.NumericUpDown();
+            this.tk = new System.Windows.Forms.NumericUpDown();
+            this.lambd = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.medicineIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sectorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.medicineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.medicineBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.line_chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.limit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nWorkers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.t0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lambd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -116,7 +130,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(825, 457);
+            this.tabControl1.Size = new System.Drawing.Size(1065, 574);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
             // 
@@ -152,7 +166,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(817, 407);
+            this.tabPage1.Size = new System.Drawing.Size(1057, 524);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sectors and Distances";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -415,7 +429,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(817, 407);
+            this.tabPage2.Size = new System.Drawing.Size(1057, 524);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Medicines";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -434,36 +448,8 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(800, 359);
+            this.dataGridView1.Size = new System.Drawing.Size(1049, 516);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // medicineIdDataGridViewTextBoxColumn
-            // 
-            this.medicineIdDataGridViewTextBoxColumn.DataPropertyName = "MedicineId";
-            this.medicineIdDataGridViewTextBoxColumn.HeaderText = "MedicineId";
-            this.medicineIdDataGridViewTextBoxColumn.Name = "medicineIdDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // sectorDataGridViewTextBoxColumn
-            // 
-            this.sectorDataGridViewTextBoxColumn.DataPropertyName = "Sector";
-            this.sectorDataGridViewTextBoxColumn.HeaderText = "Sector";
-            this.sectorDataGridViewTextBoxColumn.Name = "sectorDataGridViewTextBoxColumn";
-            // 
-            // medicineBindingSource
-            // 
-            this.medicineBindingSource.DataSource = typeof(SterowanieMagazynowaniem.Medicine);
             // 
             // tabPage3
             // 
@@ -476,7 +462,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(817, 407);
+            this.tabPage3.Size = new System.Drawing.Size(1057, 524);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Orders";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -487,12 +473,12 @@
             this.medicinesListBox.Location = new System.Drawing.Point(206, 6);
             this.medicinesListBox.Margin = new System.Windows.Forms.Padding(2);
             this.medicinesListBox.Name = "medicinesListBox";
-            this.medicinesListBox.Size = new System.Drawing.Size(399, 277);
+            this.medicinesListBox.Size = new System.Drawing.Size(832, 498);
             this.medicinesListBox.TabIndex = 5;
             // 
             // removeOrderBtn
             // 
-            this.removeOrderBtn.Location = new System.Drawing.Point(159, 295);
+            this.removeOrderBtn.Location = new System.Drawing.Point(6, 436);
             this.removeOrderBtn.Margin = new System.Windows.Forms.Padding(2);
             this.removeOrderBtn.Name = "removeOrderBtn";
             this.removeOrderBtn.Size = new System.Drawing.Size(150, 28);
@@ -503,7 +489,7 @@
             // 
             // generateOrderBtn
             // 
-            this.generateOrderBtn.Location = new System.Drawing.Point(5, 295);
+            this.generateOrderBtn.Location = new System.Drawing.Point(6, 404);
             this.generateOrderBtn.Margin = new System.Windows.Forms.Padding(2);
             this.generateOrderBtn.Name = "generateOrderBtn";
             this.generateOrderBtn.Size = new System.Drawing.Size(150, 28);
@@ -518,16 +504,23 @@
             this.ordersListBox.Location = new System.Drawing.Point(5, 6);
             this.ordersListBox.Margin = new System.Windows.Forms.Padding(2);
             this.ordersListBox.Name = "ordersListBox";
-            this.ordersListBox.Size = new System.Drawing.Size(151, 277);
+            this.ordersListBox.Size = new System.Drawing.Size(151, 394);
             this.ordersListBox.TabIndex = 2;
             this.ordersListBox.SelectedIndexChanged += new System.EventHandler(this.ordersListBox_SelectedIndexChanged);
             // 
             // tabPage4
             // 
             this.tabPage4.AutoScroll = true;
+            this.tabPage4.Controls.Add(this.label16);
+            this.tabPage4.Controls.Add(this.label15);
+            this.tabPage4.Controls.Add(this.label14);
+            this.tabPage4.Controls.Add(this.line_chart);
             this.tabPage4.Controls.Add(this.textBoxOutput);
             this.tabPage4.Controls.Add(this.runBtn);
             this.tabPage4.Controls.Add(this.label13);
+            this.tabPage4.Controls.Add(this.lambd);
+            this.tabPage4.Controls.Add(this.tk);
+            this.tabPage4.Controls.Add(this.t0);
             this.tabPage4.Controls.Add(this.limit);
             this.tabPage4.Controls.Add(this.label12);
             this.tabPage4.Controls.Add(this.nWorkers);
@@ -535,25 +528,41 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 46);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(817, 407);
+            this.tabPage4.Size = new System.Drawing.Size(1057, 524);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Algorithm";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // line_chart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.line_chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.line_chart.Legends.Add(legend1);
+            this.line_chart.Location = new System.Drawing.Point(200, 6);
+            this.line_chart.Name = "line_chart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.line_chart.Series.Add(series1);
+            this.line_chart.Size = new System.Drawing.Size(851, 294);
+            this.line_chart.TabIndex = 6;
+            this.line_chart.Text = "chart2";
+            // 
             // textBoxOutput
             // 
             this.textBoxOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxOutput.Location = new System.Drawing.Point(22, 176);
+            this.textBoxOutput.Location = new System.Drawing.Point(22, 306);
             this.textBoxOutput.Multiline = true;
             this.textBoxOutput.Name = "textBoxOutput";
-            this.textBoxOutput.Size = new System.Drawing.Size(773, 212);
+            this.textBoxOutput.Size = new System.Drawing.Size(1029, 212);
             this.textBoxOutput.TabIndex = 5;
             this.textBoxOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // runBtn
             // 
             this.runBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.runBtn.Location = new System.Drawing.Point(94, 70);
+            this.runBtn.Location = new System.Drawing.Point(94, 243);
             this.runBtn.Name = "runBtn";
             this.runBtn.Size = new System.Drawing.Size(84, 33);
             this.runBtn.TabIndex = 4;
@@ -604,6 +613,88 @@
             this.imageList1.Images.SetKeyName(2, "a2.png");
             this.imageList1.Images.SetKeyName(3, "a3.png");
             // 
+            // t0
+            // 
+            this.t0.DecimalPlaces = 5;
+            this.t0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.t0.Location = new System.Drawing.Point(73, 115);
+            this.t0.Name = "t0";
+            this.t0.Size = new System.Drawing.Size(105, 26);
+            this.t0.TabIndex = 2;
+            // 
+            // tk
+            // 
+            this.tk.DecimalPlaces = 5;
+            this.tk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tk.Location = new System.Drawing.Point(73, 147);
+            this.tk.Name = "tk";
+            this.tk.Size = new System.Drawing.Size(105, 26);
+            this.tk.TabIndex = 2;
+            // 
+            // lambd
+            // 
+            this.lambd.DecimalPlaces = 5;
+            this.lambd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lambd.Location = new System.Drawing.Point(73, 179);
+            this.lambd.Name = "lambd";
+            this.lambd.Size = new System.Drawing.Size(105, 26);
+            this.lambd.TabIndex = 2;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(47, 122);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(20, 13);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "T0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(47, 154);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(20, 13);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Tk";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(26, 186);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 13);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "lambda";
+            // 
+            // medicineIdDataGridViewTextBoxColumn
+            // 
+            this.medicineIdDataGridViewTextBoxColumn.DataPropertyName = "MedicineId";
+            this.medicineIdDataGridViewTextBoxColumn.HeaderText = "MedicineId";
+            this.medicineIdDataGridViewTextBoxColumn.Name = "medicineIdDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // sectorDataGridViewTextBoxColumn
+            // 
+            this.sectorDataGridViewTextBoxColumn.DataPropertyName = "Sector";
+            this.sectorDataGridViewTextBoxColumn.HeaderText = "Sector";
+            this.sectorDataGridViewTextBoxColumn.Name = "sectorDataGridViewTextBoxColumn";
+            // 
+            // medicineBindingSource
+            // 
+            this.medicineBindingSource.DataSource = typeof(SterowanieMagazynowaniem.Medicine);
+            // 
             // medicineBindingSource1
             // 
             this.medicineBindingSource1.DataSource = typeof(SterowanieMagazynowaniem.Medicine);
@@ -616,7 +707,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 479);
+            this.ClientSize = new System.Drawing.Size(1087, 596);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
@@ -627,12 +718,16 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.line_chart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.limit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nWorkers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.t0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lambd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicineBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -690,6 +785,13 @@
         private System.Windows.Forms.NumericUpDown nWorkers;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.TextBox textBoxOutput;
+        private System.Windows.Forms.DataVisualization.Charting.Chart line_chart;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown lambd;
+        private System.Windows.Forms.NumericUpDown tk;
+        private System.Windows.Forms.NumericUpDown t0;
     }
 }
 

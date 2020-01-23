@@ -9,20 +9,26 @@ namespace SterowanieMagazynowaniem
 {
     public class SA
     {
+        public static float T0_def = 25F;
+        public static float Tk_def = 0.05F;
+        public static float lambda_def = 0.9999F;
+
         public int NWorkers { get; set; }
         public int ItemLimit { get; set; }
         public List<Medicine> Medicines { get; set; }
         public int GoalFunction { get; set; }
         public string TextOutput;
+        public List<int> x;
+        public List<int> y;
+        public bool finished = false;
+        public float T0;
+        public float Tk;
+        public float lambda;
 
-        public float T0 = 100F;
-        public float Tk = 0.01F;
-        public float lambda = 0.999F;
 
-
-        public SA(int num_of_workers, int item_limit, List<Medicine> medicines)
+        public SA(int num_of_workers, int item_limit, List<Medicine> medicines, float T0, float Tk, float lambda)
         {
-            NWorkers = num_of_workers; ItemLimit = item_limit; Medicines = medicines;
+            NWorkers = num_of_workers; ItemLimit = item_limit; Medicines = medicines; this.T0 = T0; this.Tk = Tk; this.lambda = lambda;
             Medicines.Insert(0, null);
             Medicines.Add(null);
             Random rand = new Random();
@@ -37,10 +43,13 @@ namespace SterowanieMagazynowaniem
 
             foreach (var med in Medicines)
             {
-                Debug.WriteLine(med);
+                //Debug.WriteLine(med);
             }
             var db = new ProgramContext();
             TextOutput = "";
+            x = new List<int>();
+            y = new List<int>();
+            finished = false;
         }
 
         public int Goal(List<Medicine> perm)
@@ -106,8 +115,10 @@ namespace SterowanieMagazynowaniem
             int current_goal = best_goal;
             int new_goal;
             float T = T0;
+            int counter = 0;
             while(T >= Tk)
             {
+                counter++;
                 resp = GetNewPerm(current_perm, false);
                 new_perm = resp.Item1;
                 new_goal = resp.Item2;
@@ -133,24 +144,27 @@ namespace SterowanieMagazynowaniem
                     }
                 }
                 T = lambda * T;
+                x.Add(counter);
+                y.Add(current_goal);
                 //Debug.WriteLine("T = " + T.ToString() + ", Tk = " + Tk.ToString() + ", goal: " + current_goal.ToString());
             }
+            finished = true;
             GoalFunction = best_goal;
             TextOutput += "Best Goal: " + Environment.NewLine;
             TextOutput += best_goal.ToString();
             TextOutput += Environment.NewLine + "Sectors order:" + Environment.NewLine;
-            Debug.WriteLine(best_goal);
+            //Debug.WriteLine(best_goal);
 
             foreach(Medicine med in best_perm)
             {
                 if(med != null)
                 {
-                    Debug.Write(String.Format("{0} ", med.SectorID.ToString()));
+                    //Debug.Write(String.Format("{0} ", med.SectorID.ToString()));
                     TextOutput += String.Format("{0} ", med.SectorID.ToString());
                 }
                 else
                 {
-                    Debug.Write("| ");
+                    //Debug.Write("| ");
                     TextOutput += "| ";
                 }            
             }
